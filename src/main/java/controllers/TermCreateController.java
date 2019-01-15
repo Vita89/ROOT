@@ -32,6 +32,7 @@ public class TermCreateController extends HttpServlet {
         String disciplinesName = req.getParameter("disciplines");
         String [] disciplines = disciplinesName.split(",");
         String [] disNames = new String[disciplines.length];
+        System.out.println();
         for(int i = 0; i < disciplines.length; i++)
         {
             disNames[i] = disciplines[i];
