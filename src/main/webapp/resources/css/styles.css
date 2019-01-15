@@ -1,0 +1,91 @@
+body{background-color:#ddd8e6;font-family: cursive;}
+h1{text-align: center;font-size: 26px;border: solid 2px #98949f;background-color: #ffffff;width: 75%;font-weight: normal;padding-bottom: 5px;margin: auto;}
+.logout-link{position: absolute;right: 115px;top: 32px;}
+.main-link{position: absolute;top: 83px;left: 5px;}
+.back-link{position: absolute;top: 83px;left: 97px;}
+#title-links{display: flex;width: 75%;justify-content: space-between;margin: auto;margin-top: 50px;}
+
+.bad-writing{color: red; padding-top: 15px;}
+
+input[type=text], select{border: solid 2px #98949f;font-family: cursive;padding-bottom: 4px;width: 210px; margin-bottom: 20px;}
+label{font-size: 14px;padding-right: 25px;}
+h3{font-weight: 100;position:relative;margin: auto;width: 75%;padding-top: 23px;margin-bottom: 20px;}
+.links{font-size: 14px;padding-right: 15px;}
+
+input[type = submit]{border: solid 2px #98949f;background-color: #c1bbc9;margin-bottom: 10px;margin-top: 10px;padding-bottom: 6px;font-family: cursive;width: 120px;}
+input[type = submit]:hover{cursor: pointer;}
+
+p{font-family: cursive;font-size: medium;font-weight: normal;}
+
+#creation{display: table;width: 75%;justify-content: space-between;margin: auto;margin-top: 50px;}
+
+#discipline-create-page input[type="submit"]{ width: 120px;    margin-left: 92px;}
+
+#student-list-buttons{width:75%; margin:auto; margin-top: 23px;}
+#student-list-buttons .big-button{ width: 300px; margin-right: 20px;}
+#student-list-buttons .small-button{ width: 226px;}
+#student-list-table{width:75%; margin:auto;}
+#student-list-table .main-info-table tr, #student-list-table .main-info-table td, #student-list-table .main-info-table th {vertical-align: bottom; padding-bottom: 10px}
+
+.main-info-table{  border-collapse: collapse;border: solid 2px #98949f;text-align: left;font-size: 14px;width: 100%;height: 80px; }
+.main-info-table tr, .main-info-table td {  border-collapse: collapse;border: solid 2px #98949f;text-align: left;font-size: 14px;width: 700px;height: 80px; }
+.main-info-table th{  border-collapse: collapse;border: solid 2px #98949f;text-align: left;font-size: 14px;width: 700px;height: 80px; background-color: #C1BBC9;  }
+.main-info-table .aling-right{ text-align: right;}
+.main-info-table .checkbox-narrow{width: 7%;}
+
+.short-table{margin-bottom: 50px;}
+.short-table td, .short-table tr, .short-table th {height: 30px; !important;}
+
+.narrow-table{width:45%; margin-bottom: 20px;}
+.narrow-table .th-width80{width:80%;}
+
+
+.container{width:75%; margin:auto;margin-top: 30px;}
+
+#term-list-main-info{display: flex;}
+#term-list-main-info .big-button{ width: 300px;margin-right: 20px;margin-top: 0px;margin-bottom: 20px;margin-left: 50px;}
+
+
+
+#student-progress-table{ width: 75%; margin:auto; height: 20px}
+#student-progress-table .main-info-table tr,#student-progress-table .main-info-table th, #student-progress-table .main-info-table td {height: 18px}
+#discipline-list-table .main-info-table tr,#discipline-list-table .main-info-table th, #discipline-list-table .main-info-table td{vertical-align: bottom; padding-bottom: 10px}
+
+#student-progress-page .marks-table-with-semestrs {display: flex; justify-content: space-between;}
+
+
+#student-create-page label{ float: left; width: 126px; text-align: right; padding-right: 12px;margin-top:10px; clear: left;}
+#student-create-page input[type=submit]{margin-left: 139px}
+
+#term-create-page .one-row{display: flex;}
+#term-create-page .one-row .for-label{width:204px;}
+#term-create-page input[type=submit]{margin-left: 204px;}
+
+#discipline-list-page{display: flex;}
+#discipline-list-page .big-button{ width: 300px; margin-right: 20px;}
+#discipline-list-page .big-button{ width: 300px;margin-right: 20px;margin-top: 0px;margin-bottom: 20px;margin-left: 50px;}
+
+.display-flex{display: flex;}
+@media (max-width:768px) {
+    #term-list-main-info{display: block}
+    #student-progress-page .marks-table-with-semestrs{display: block}
+    .narrow-table {width: 75%;}
+    .logout-link{right: 10px;}
+    .back-link {top: 60px;left: 7px;}
+    .main-link {top: 35px;left: 5px;}
+    #discipline-list-page {display: block;}
+    .main-info-table{margin-bottom: 30px;}
+    #term-list-main-info .big-button{margin-left: 2px;}
+
+}
+
+@media (max-width:480px) {
+    .container{width:90%;}
+    .narrow-table {width: 100%;}
+    h1 {font-size: 17px;width: 52%;}
+    #discipline-list-page {display: block;}
+    .main-info-table{margin-bottom: 30px;}
+    #student-create-page input[type=submit] {margin-left: 0px;}
+    #term-create-page input[type=submit] {margin-left: 166px;}
+    #term-list-main-info .big-button{margin-left: 0px;}
+}
