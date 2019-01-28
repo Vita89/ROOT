@@ -52,7 +52,15 @@
                 <i>Такого пользователя не существует!</i>
             </div>
         </c:if>
+        <c:if test="${mm == 'role'}">
+            <div class="bad-writing">
+                <i>У данного пользователя нет такой роли!</i>
+            </div>
+        </c:if>
     </div>
+
+    <div> <h5>Для тестирования: 1) login(admin), password(1234)
+                                2) login(student), password(1234)</h5></div>
 
 
 </form>

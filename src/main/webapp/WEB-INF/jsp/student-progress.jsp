@@ -11,7 +11,14 @@
 </head>
 <body>
 <h1>Система управления студентами и их успеваемостью</h1>
-<a href="/logout" class="logout-link">Logout</a>
+<c:choose>
+    <c:when test="${login=='true'}">
+        <a href="/logout" class="logout-link">Logout</a>
+    </c:when>
+    <c:otherwise>
+        <a href="/registration-form" class="logout-link">Login</a>
+    </c:otherwise>
+</c:choose>
 <a href="/" class="links main-link">На главную</a>
 <a href="/students" class="links back-link">Назад</a>
 <h3>Отображена успеваемость следующего студента</h3>

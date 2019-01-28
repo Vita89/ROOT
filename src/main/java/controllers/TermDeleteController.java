@@ -23,6 +23,7 @@ public class TermDeleteController extends HttpServlet {
         }
 
         Database.deleteTerm(termsId);
+        //Database.updateTermDiscipline();
         resp.sendRedirect("/terms");
 
 

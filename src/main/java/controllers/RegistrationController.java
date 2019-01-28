@@ -45,6 +45,17 @@ public class RegistrationController extends HttpServlet {
             return;
         }
 
+      boolean loginStatus =  Database.canAccountLoginWithThisRole(account.getId(), Integer.parseInt(role));
+        if(loginStatus==false){
+            req.setAttribute("mm", "role");
+            ArrayList<Role> roles = Database.getRole();
+            req.setAttribute("roles", roles);
+            req.getRequestDispatcher("WEB-INF/jsp/login-form.jsp").forward(req, resp);
+            return;
+        }
 
+        req.getSession().setAttribute("role", role);
+        req.getSession().setAttribute("login", "true");
+        resp.sendRedirect("/");
     }
 }

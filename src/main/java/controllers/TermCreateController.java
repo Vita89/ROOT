@@ -29,20 +29,16 @@ public class TermCreateController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String inputDuration = req.getParameter("duration");
 
-        String disciplinesName = req.getParameter("disciplines");
-        String [] disciplines = disciplinesName.split(",");
-        String [] disNames = new String[disciplines.length];
-        System.out.println();
-        for(int i = 0; i < disciplines.length; i++)
-        {
-            disNames[i] = disciplines[i];
-        }
+        String[] disciplinesName = req.getParameterValues("disciplines");
 
         if (inputDuration.equals("")) {
-            req.setAttribute("mm", "qwerty");
-            req.getRequestDispatcher("WEB-INF/jsp/term-create").forward(req,resp);
+            req.setAttribute("message", "empty_duration");
+            List<Discipline> disciplinesList = Database.getAllDiscipline();
+            req.setAttribute("disciplines", disciplinesList);
+            req.getRequestDispatcher("WEB-INF/jsp/term-create.jsp").forward(req, resp);
         } else {
-            Database.createTerm(inputDuration);
+          int idNewTerm =  Database.createTerm(inputDuration);
+            Database.createTermDisciplineRelation(idNewTerm, disciplinesName);
             resp.sendRedirect("/terms");
         }
     }

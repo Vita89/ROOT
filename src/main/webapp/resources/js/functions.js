@@ -80,13 +80,19 @@ function studentProgress() {
 }
 
 function deleteTerm() {
-    var items = $("input[type=checkbox]:checked")
-    var idsSelected = "";
-    for (var i = 0; i < items.length; ++i) {
-        idsSelected = idsSelected + $(items[i]).attr("id") + ",";
-    }
 
-    $("#idTermDelete").val(idsSelected);
+    var selectedTerm = document.getElementById("selectTerm");
+    var termId = selectedTerm.options[selectedTerm.selectedIndex].value;
+
+    $("#idTermDelete").val(termId);
     $('#delete-term-form').submit();
+
+}
+
+function termModify() {
+    var selectedTerm = document.getElementById("selectTerm");
+    var termId = selectedTerm.options[selectedTerm.selectedIndex].value;
+    $("#termIdModify").val(termId);
+    $('#term-modify-form').submit();
 
 }

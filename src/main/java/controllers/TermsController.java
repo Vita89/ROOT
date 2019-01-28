@@ -18,7 +18,7 @@ public class TermsController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Term> termsList = Database.getAllTerms();
         Term selectedterm = termsList.get(0);
-        List<Discipline> disciplinesList = Database.getAllDisciplineByTermId(selectedterm.getId());
+        List<Discipline> disciplinesList = Database.getAllDisciplineByTermId(""+selectedterm.getId());
 
         req.setAttribute("terms", termsList);
         req.setAttribute("selectedTerm", selectedterm);

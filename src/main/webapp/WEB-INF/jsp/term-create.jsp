@@ -10,7 +10,14 @@
 </head>
 <body>
 <h1>Система управления студентами и их успеваемостью</h1>
-<a href="/logout" class="logout-link">Logout</a>
+<c:choose>
+    <c:when test="${login=='true'}">
+        <a href="/logout" class="logout-link">Logout</a>
+    </c:when>
+    <c:otherwise>
+        <a href="/registration-form" class="logout-link">Login</a>
+    </c:otherwise>
+</c:choose>
 <a href="/" class="links main-link">На главную</a>
 <a href="/terms" class="links back-link">Назад</a>
 <h3>Для создания семестра заполните следующие данные и нажмите кнопку «Создать».</h3>
@@ -19,7 +26,7 @@
    <form action="/term-create" method="post">
        <div class="one-row">
            <div class="for-label">
-               <label>Длительность (в неделях)</label>
+               <label >Длительность (в неделях)</label>
            </div>
            <input type="text" name="duration">
        </div>
@@ -29,14 +36,14 @@
            </div>
            <select multiple size="8" name="disciplines">
                <c:forEach items="${disciplines}" var="dis">
-                   <option>${dis.name}</option>
+                   <option value="${dis.id}">${dis.name}</option>
                </c:forEach>
            </select>
        </div>
        <input type="submit" value="Создать">
-       <c:if test="${mm == 'qwerty'}">
+       <c:if test="${message == 'empty_duration'}">
            <div class="bad-writing">
-               <i>Поля не должны быть пустыми!</i>
+               <i>Заполните длительность семестра!</i>
            </div>
        </c:if>
 

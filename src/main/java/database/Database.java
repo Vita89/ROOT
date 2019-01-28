@@ -1,5 +1,6 @@
 package database;
 
+import constants.Constants;
 import entities.*;
 
 import java.sql.Connection;
@@ -17,9 +18,9 @@ public class Database {
         Database database = new Database();
         // Student student = new Student();
         int[] disID = {2, 5, 3};
-       // database.createTermDisciplineRelation(2, disID);
+        // database.createTermDisciplineRelation(2, disID);
         int[] idTerms = {3};
-       Database.deleteTerm(idTerms);
+        Database.deleteTerm(idTerms);
 
 
     }
@@ -29,7 +30,7 @@ public class Database {
         ArrayList<Student> students = new ArrayList<Student>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM student WHERE status = '1'");
@@ -53,7 +54,7 @@ public class Database {
     public static Student getStudentById(int id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM student where id ='" + id + "' ");
@@ -77,7 +78,7 @@ public class Database {
     public static void createStudent(String surname, String name, String group, String entranceDate) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             statement.execute("INSERT INTO `student` (`surname`, `name`, `group`, `entrance_date`) VALUES ('" + surname + "', '" + name + "', '" + group + "', '" + entranceDate + "')");
         } catch (Exception e) {
@@ -89,7 +90,7 @@ public class Database {
         ArrayList<Discipline> disciplines = new ArrayList<Discipline>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM discipline where status='1'");
@@ -110,7 +111,7 @@ public class Database {
     public static void createDiscipline(String name) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             statement.execute("INSERT INTO `discipline` (`name`) VALUES ('" + name + "');");
         } catch (Exception e) {
@@ -122,7 +123,7 @@ public class Database {
     public static Discipline getDisciplineById(int id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM discipline where id ='" + id + "' ");
@@ -142,7 +143,8 @@ public class Database {
     public static void rewriteDiscipline(String name, int id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
+
             Statement statement = connect.createStatement();
             statement.executeUpdate("UPDATE `discipline` SET `name` = '" + name + "' WHERE ( `id` = '" + id + "')");
         } catch (Exception e) {
@@ -153,7 +155,7 @@ public class Database {
     public static void modifyStudent(String surname, String name, String group, String date) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             statement.executeUpdate("UPDATE `student` SET `surname` = '" + surname + "', `name` = '" + name + "', `group` = '" + group + "', `entrance_date` = '" + date + "' WHERE (`id` = '1')");
         } catch (Exception e) {
@@ -166,7 +168,7 @@ public class Database {
         ArrayList<Term> terms = new ArrayList<Term>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM term where status='1'");
@@ -188,7 +190,7 @@ public class Database {
     public static int createTerm(String duration) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM term ORDER BY id DESC limit 1 ");
             String lastNameSemestr = null;
@@ -210,12 +212,12 @@ public class Database {
         return -1;
     }
 
-    public static void createTermDisciplineRelation(int termId, int[] disciplinesId) {
+    public static void createTermDisciplineRelation(int termId, String[] disciplinesId) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
-            for (int disciplineId : disciplinesId) {
+            for (String disciplineId : disciplinesId) {
                 statement.execute("INSERT INTO `term_discipline` (`id_term`,`id_discipline`) VALUES ('" + termId + "', '" + disciplineId + "')");
             }
         } catch (Exception e) {
@@ -227,7 +229,7 @@ public class Database {
         List<Mark> marks = new ArrayList<Mark>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM mark\n" +
@@ -253,7 +255,7 @@ public class Database {
     public static Term getTermById(String idTerm) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM term where id ='" + idTerm + "'");
             while (resultSet.next()) {
@@ -270,23 +272,18 @@ public class Database {
         return null;
     }
 
-    public static List<Discipline> getAllDisciplineByTermId(int idTerm) {
+    public static List<Discipline> getAllDisciplineByTermId(String idTerm) {
         ArrayList<Discipline> disciplines = new ArrayList<Discipline>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT name FROM discipline as d\n" +
-                    "left join term_discipline as td on td.id_discipline = d.id\n" +
-                    "where td.id_term = '" + idTerm + "'");
+            ResultSet resultSet = statement.executeQuery("SELECT name FROM discipline as d left join term_discipline as td on td.id_discipline = d.id where td.id_term = '"+idTerm+"' and td.status = '1' ");
             while (resultSet.next()) {
-
                 Discipline discipline = new Discipline();
-                discipline.setId(idTerm);
+                discipline.setId(Integer.parseInt(idTerm));
                 discipline.setName(resultSet.getString("name"));
                 disciplines.add(discipline);
-
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -297,7 +294,7 @@ public class Database {
     public static void updateTerm(String idTerm, String duration) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             statement.executeUpdate("UPDATE term\n" +
                     "SET duration = '" + duration + "'\n" +
@@ -310,7 +307,7 @@ public class Database {
     public static void updateTermDiscipline(int id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             statement.execute("UPDATE `term_discipline` SET `status` = '0' WHERE (`id` = '" + id + "');");
         } catch (Exception e) {
@@ -321,7 +318,7 @@ public class Database {
     public static void deleteStudent(int[] idsStudent) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             for (int idSt : idsStudent) {
                 statement.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + idSt + "');");
@@ -334,7 +331,7 @@ public class Database {
     public static void deleteDiscipline(int[] idDis) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             for (int idD : idDis) {
                 statement.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` = '" + idD + "');");
@@ -347,7 +344,7 @@ public class Database {
     public static void deleteTerm(int[] idTerms) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
             Statement statement = connect.createStatement();
             for (int idTerm : idTerms) {
                 statement.execute("UPDATE `term` SET `status` = '0' WHERE (`id` = '" + idTerm + "');");
@@ -362,7 +359,7 @@ public class Database {
         ArrayList<Role> roles = new ArrayList<Role>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM role");
@@ -383,7 +380,7 @@ public class Database {
     public static Account getAccount(String login, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connect = getConnection("jdbc:mysql://localhost:3306/student_progress?user=student_progress&password=1234&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            Connection connect = getConnection(Constants.DATABASE_URL);
 
             Statement statement = connect.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM account where login = '" + login + "' and passwod = '" + password + "';");
@@ -391,7 +388,7 @@ public class Database {
                 Account account = new Account();
                 account.setId(resultSet.getInt("id"));
                 account.setLogin(resultSet.getString("login"));
-                account.setPassword(resultSet.getString("password"));
+                account.setPassword(resultSet.getString("passwod"));
                 return account;
             }
 
@@ -400,6 +397,34 @@ public class Database {
         }
         return null;
 
+    }
+
+    public static void deleteDesciplinesFromTerm(String termID) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connect = getConnection(Constants.DATABASE_URL);
+            Statement statement = connect.createStatement();
+            statement.execute("UPDATE `term_discipline` SET `status` = '0' WHERE (`id_term` = '"+ termID+"')");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static boolean canAccountLoginWithThisRole(int idAccount, int idRole){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connect = getConnection(Constants.DATABASE_URL);
+            Statement statement = connect.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM role_account where id_role='"+ idRole+"' and id_account='"+idAccount +"' ");
+            while (resultSet.next()) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

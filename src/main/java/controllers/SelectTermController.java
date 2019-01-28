@@ -19,7 +19,7 @@ public class SelectTermController extends HttpServlet {
         String idTerm = req.getParameter("selectTerm");
         List<Term> termsList = Database.getAllTerms();
         Term selectedterm = Database.getTermById(idTerm);
-        List<Discipline> disciplinesList = Database.getAllDisciplineByTermId(selectedterm.getId());
+        List<Discipline> disciplinesList = Database.getAllDisciplineByTermId(""+selectedterm.getId());
 
         req.setAttribute("terms", termsList);
         req.setAttribute("selectedTerm", selectedterm);

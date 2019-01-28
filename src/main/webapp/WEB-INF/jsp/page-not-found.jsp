@@ -19,9 +19,7 @@
     </c:otherwise>
 </c:choose>
 <div id="title-links">
-    <a href="/students">Студенты</a>
-    <a href="/disciplines">Дисциплины</a>
-    <a href="/terms">Семестры</a>
+  Такая страница не найдена!
 </div>
 
 

@@ -10,7 +10,14 @@
 </head>
 <body>
 <h1>Система управления студентами и их успеваемостью</h1>
-<a href="/logout" class="logout-link">Logout</a>
+<c:choose>
+    <c:when test="${login=='true'}">
+        <a href="/logout" class="logout-link">Logout</a>
+    </c:when>
+    <c:otherwise>
+        <a href="/registration-form" class="logout-link">Login</a>
+    </c:otherwise>
+</c:choose>
 <a href="/" class="links main-link">На главную</a>
 <a href="/terms" class="links back-link">Назад</a>
 <h3>Для модификации семестра отредактируйте данные и нажмите кнопку «Применить».</h3>
@@ -19,18 +26,19 @@
         <div class="one-row">
             <div class="for-label">
                 <input type="hidden" value="${term.id}" name="termId">
-                <label>Длительность (в неделях)</label>
+                <label >Длительность (в неделях)</label>
+                <input type="text" value="${term.duration}" name="duration">
             </div>
-            <input type="text" name="duration">
+
         </div>
         <div class="one-row">
             <div class="for-label">
                 <label>Дисциплины в семестре</label>
             </div>
-            <select multiple size="8" name="disciplines">
+            <select multiple size="8"  name="disciplines">
 
                 <c:forEach items="${disciplines}" var="dis">
-                    <option>${dis.name}</option>
+                    <option value="${dis.id}">${dis.name}</option>
                 </c:forEach>
 
             </select>
